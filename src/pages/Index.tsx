@@ -1,3 +1,9 @@
+/**
+ * Index.tsx — Landing page for the MediCare app.
+ * Renders the hero, features grid, use-cases, CTA and footer.
+ * Uses shared UI components and lucide-react icons, and navigates to /dashboard.
+ */
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Activity, FileText, Clock, Search, Shield, Sparkles } from "lucide-react";

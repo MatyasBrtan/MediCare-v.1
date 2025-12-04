@@ -1,3 +1,8 @@
+/* The Dashboard.tsx file implements the main dashboard page for the MediCare app. 
+It displays a summary of health-related events (such as surgeries, medications, documents, and rehabilitation) using cards and a timeline. 
+The page allows users to add new health events via a dialog, and it visually summarizes the number and types of events. The timeline shows all recorded events in chronological order, 
+and the UI is built using custom components and icons for a modern, user-friendly experience.*/
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -50,6 +55,7 @@ const mockEvents: HealthEvent[] = [
     description: "Kontrolní vyšetření po operaci",
     doctor: "MUDr. Jan Novák"
   }
+  
 ];
 
 const Dashboard = () => {

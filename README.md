@@ -1,73 +1,120 @@
-# Welcome to your Lovable project
+✅ README – Setup Frontend & Backend (lokální vývoj)
 
-## Project info
+Tento projekt aktuálně obsahuje frontend i backend v jedné složce. Níže je kompletní návod, jak spustit obě části aplikace na vašem počítači.
 
-**URL**: https://lovable.dev/projects/47a2131f-75ac-4021-b90f-9c1717cc023e
+🚀 1. Frontend Setup
 
-## How can I edit this code?
+Frontend běží na JavaScriptovém vývojovém serveru (Vite).
+Pro jeho spuštění je potřeba mít Node.js + npm.
 
-There are several ways of editing your application.
+📌 1.1. Instalace Node.js (doporučeno přes NVM)
 
-**Use Lovable**
+Doporučujeme nainstalovat Node.js pomocí nvm (Node Version Manager):
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/47a2131f-75ac-4021-b90f-9c1717cc023e) and start prompting.
+🟦 macOS / Linux – instalace NVM:
 
-Changes made via Lovable will be committed automatically to this repo.
+https://github.com/nvm-sh/nvm#installing-and-updating
 
-**Use your preferred IDE**
+Po instalaci:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+nvm install --lts
+nvm use --lts
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+🟦 Windows – instalace NVM-Windows:
 
-Follow these steps:
+Použijte tento nástroj:
+https://github.com/coreybutler/nvm-windows/releases
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+Po instalaci:
+
+nvm install lts
+nvm use lts
+
+
+Ověřte instalaci:
+
+node -v
+npm -v
+
+📌 1.2. Klonování repozitáře
+
+Pokud chcete pracovat lokálně:
+
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+📌 1.3. Instalace frontend závislostí
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+📌 1.4. Spuštění vývojového serveru
 npm run dev
-```
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Frontend běží defaultně na:
 
-**Use GitHub Codespaces**
+http://localhost:5173
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+🐍 2. Backend Setup (Django)
 
-## What technologies are used for this project?
+Backend je vytvořen v Pythonu pomocí Django REST Framework.
 
-This project is built with:
+📌 2.1. Ověření Pythonu
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Doporučeno: Python 3.11+
 
-## How can I deploy this project?
+python --version
 
-Simply open [Lovable](https://lovable.dev/projects/47a2131f-75ac-4021-b90f-9c1717cc023e) and click on Share -> Publish.
+📌 2.2. Vytvoření virtuálního prostředí
+python -m venv venv
 
-## Can I connect a custom domain to my Lovable project?
+📌 2.3. Aktivace virtuálního prostředí
+🟦 Windows (PowerShell)
 
-Yes, you can!
+Pokud se objeví chyba o zakázaných skriptech:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+Poté aktivace:
+
+venv\Scripts\activate
+
+🍏 macOS / Linux
+source venv/bin/activate
+
+📌 2.4. Instalace backend závislostí
+pip install -r requirements.txt
+
+📌 2.5. Migrace databáze
+python manage.py migrate
+
+📌 2.6. Spuštění Django backend serveru
+python manage.py runserver
+
+
+Backend běží na:
+
+http://127.0.0.1:8000
+
+🔗 3. Jak spolu frontend a backend komunikují
+
+Frontend a backend se spouštějí zvlášť:
+
+Služba	Adresa
+Frontend	http://localhost:5173
+
+Backend	http://127.0.0.1:8000
+
+Frontend posílá HTTP požadavky na backend API.
+
+V produkci bude vše spojeno (například přes Docker nebo Nginx).
+
+🛠️ 4. Struktura projektu (dočasná)
+
+Momentálně jsou obě části v jedné složce.
+Později se doporučuje rozdělení:
+
+MediCare/
+ ├── backend/
+ ├── frontend/
+ └── README.md
